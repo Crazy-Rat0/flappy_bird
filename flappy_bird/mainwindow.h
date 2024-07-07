@@ -17,7 +17,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     bird* a_bird;
-    QTimer* bird_timer;
+    QTimer* bird_drop_timer;
+    QTimer* bird_cartoon_timer;
 
 private:
     Ui::MainWindow *ui;
