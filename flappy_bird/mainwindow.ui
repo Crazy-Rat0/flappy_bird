@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>flappy bird</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-image: url(&quot;:/Images/bg.png&quot;);

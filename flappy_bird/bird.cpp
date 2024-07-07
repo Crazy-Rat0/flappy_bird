@@ -14,8 +14,8 @@ void bird::drop()
 {
     if(this->y()!=403)//not reach the bottom
     {
-        if(this->y()+20<=403)//if drop,not reach the bottom
-        this->move(this->x(),this->y()+20);
+        if(this->y()+1<=403)//if drop,not reach the bottom
+        this->move(this->x(),this->y()+1);
         else//if drop,will reach the bottom
         this->move(this->x(),403);
     }
