@@ -44,10 +44,25 @@ void bird::fly()
 
 }
 
+bool bird::Ifdead()
+{
+    if(this->y()>=403)
+    {
+        Isdead = 1;
+    }
+    return Isdead;
+}
 
 
+//VM
 void bird::change_image()
 {
+    if(Isdead){
+        this->setStyleSheet("background-image: url(:/Images/gameover.png);"
+                            "background-repeat: no-repeat;"
+                "background-position: center;"
+                            "background-color: rgba(0, 0, 0, 0);");
+    }
     if(JumpSec!=30)
     {
         if(image_index==1)

@@ -22,5 +22,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+private slots:
+    void updateBirdDrop();
+    void updateBirdCartoon();
+    void onFlyBtnClicked();
 };
 #endif // MAINWINDOW_H
