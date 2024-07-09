@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     bird.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    pipe.cpp
 
 HEADERS += \
     bird.h \
-    mainwindow.h
+    mainwindow.h \
+    pipe.h
 
 FORMS += \
     mainwindow.ui

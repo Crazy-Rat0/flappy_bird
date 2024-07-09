@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "bird.h"
+#include "pipe.h"
 #include <QTimer>
 
 QT_BEGIN_NAMESPACE
@@ -16,6 +17,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    pipeList* pipe_list;
+    QTimer* pipe_move_timer;
     bird* a_bird;
     QTimer* bird_drop_timer;
     QTimer* bird_cartoon_timer;

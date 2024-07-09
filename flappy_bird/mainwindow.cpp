@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "pipe.h"
 #include "bird.h"
 #include "QTimer"
 #include "QIcon"
@@ -12,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setWindowIcon(QIcon(":/Images/bird.ico"));//modify icon
 
+    pipe_list = new pipeList(this);
 
     a_bird = new bird(this);
 
@@ -27,8 +29,16 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     connect(ui->flyBtn, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
-       connect(a_bird, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
+    connect(a_bird, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
 
+    pipe_move_timer = new QTimer(this);
+    for (int i = 0; i < pipe_list->pipeCount; i++) {
+        connect(pipe_list->pipe_list[i][0], &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
+        connect(pipe_list->pipe_list[i][1], &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
+        connect(pipe_move_timer, &QTimer::timeout, pipe_list->pipe_list[i][0], &pipe::movePipe);
+        connect(pipe_move_timer, &QTimer::timeout, pipe_list->pipe_list[i][1], &pipe::movePipe);
+    }
+    pipe_move_timer->start(25);
 }
 
 MainWindow::~MainWindow()
