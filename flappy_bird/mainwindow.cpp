@@ -3,10 +3,12 @@
 #include "bird.h"
 #include "QTimer"
 #include "QIcon"
-
+#include "QLabel"
+#include "QVBoxLayout"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , gameOverLabel(new QLabel(this))
 {
     ui->setupUi(this);
 
@@ -24,11 +26,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(bird_cartoon_timer, &QTimer::timeout, this, &MainWindow::updateBirdCartoon);
     bird_cartoon_timer->start(100);
 
-
-
     connect(ui->flyBtn, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
-       connect(a_bird, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
+    connect(a_bird, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
 
+    // 初始化 gameOverLabel
+    gameOverLabel->setPixmap(QPixmap(":/Images/gameover.png"));
+    gameOverLabel->setAlignment(Qt::AlignCenter);
+    gameOverLabel->setVisible(false);
+
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->addWidget(gameOverLabel, 0, Qt::AlignCenter);
+    centralWidget()->setLayout(layout);
 }
 
 MainWindow::~MainWindow()
@@ -43,6 +51,7 @@ void MainWindow::updateBirdDrop()
     } else {
         bird_drop_timer->stop();
         bird_cartoon_timer->stop();
+        showGameOver();
     }
 }
 
@@ -61,5 +70,10 @@ void MainWindow::onFlyBtnClicked()
     } else {
 
     }
+}
+
+void MainWindow::showGameOver()
+{
+    gameOverLabel->setVisible(true); // 显示 GAME OVER 图标
 }
 
