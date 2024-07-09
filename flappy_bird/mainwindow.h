@@ -5,6 +5,7 @@
 #include "bird.h"
 #include "pipe.h"
 #include <QTimer>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,14 +18,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+private:
+    Ui::MainWindow *ui;
     pipeList* pipe_list;
     QTimer* pipe_move_timer;
     bird* a_bird;
     QTimer* bird_drop_timer;
     QTimer* bird_cartoon_timer;
-
-private:
-    Ui::MainWindow *ui;
+    QLabel* gameOverLabel; // QLabel 指针
+    void showGameOver();
 private slots:
     void updateBirdDrop();
     void updateBirdCartoon();
