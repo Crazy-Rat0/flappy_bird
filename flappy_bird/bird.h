@@ -7,6 +7,7 @@
 
 class bird:public QPushButton
 {
+    Q_OBJECT
 public:
     bird(QWidget* temp);
     int JumpSec;//used to store the time of bird droping without flying interrupt
@@ -16,9 +17,10 @@ public:
     bool Ifdead();
     void Setdead();
 public slots:
-    void drop();
-    void fly();
+    //void drop();
+    //void fly();
     void change_image();
+    void bird_change(int y);
 
 };
 

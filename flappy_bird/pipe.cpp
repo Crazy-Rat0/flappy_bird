@@ -31,7 +31,7 @@ pipeList::pipeList(QWidget *parent) : QLabel(parent)
         gap = 150; // 管道之间的间隙固定为 150
         h_down = 448 - h_up - gap; // 下管道高度自动调整
 
-        pipe_list[i][0] = new pipe(parent, i * 200, h_up, 0); // 上管道
-        pipe_list[i][1] = new pipe(parent, i * 200, h_down, 1); // 下管道
+        pipe_list[i][0] = new pipe(parent, i * 200 + 400, h_up, 0); // 上管道
+        pipe_list[i][1] = new pipe(parent, i * 200 + 400, h_down, 1); // 下管道
     }
 }

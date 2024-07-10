@@ -29,7 +29,7 @@ public:
     int getCount() { return pipeCount; }
     pipeList(QWidget *parent);
 private:
-    const static int pipeCount = 1024;
+    const static int pipeCount = 128;
     pipe* pipe_list[pipeCount][2];
 };
 

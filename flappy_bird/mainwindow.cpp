@@ -6,6 +6,7 @@
 #include "QIcon"
 #include "QLabel"
 #include "QVBoxLayout"
+#include "common.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -18,15 +19,18 @@ MainWindow::MainWindow(QWidget *parent)
     pipe_list = new pipeList(this);
 
     a_bird = new bird(this);
+    temp =new common();
 
     bird_drop_timer = new QTimer(this);
-    connect(bird_drop_timer, &QTimer::timeout, this, &MainWindow::updateBirdDrop);
+    connect(bird_drop_timer, &QTimer::timeout, temp, &common::drop);
     bird_drop_timer->start(25);//25ms drop a unit
 
 
     bird_cartoon_timer = new QTimer(this);
-    connect(bird_cartoon_timer, &QTimer::timeout, this, &MainWindow::updateBirdCartoon);
+    connect(bird_cartoon_timer, &QTimer::timeout, a_bird, &bird::change_image);
     bird_cartoon_timer->start(100);
+
+    connect(temp,SIGNAL(bird_y_change(int)),a_bird,SLOT(bird_change(int)));
 
     connect(ui->flyBtn, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
     connect(a_bird, &QPushButton::clicked, this, &MainWindow::onFlyBtnClicked);
@@ -57,7 +61,7 @@ MainWindow::~MainWindow()
 void MainWindow::updateBirdDrop()
 {
     if (!a_bird->Ifdead()) {
-        a_bird->drop();
+        temp->drop();
                 if (checkCollision()) {
                     a_bird->Setdead();
                     bird_drop_timer->stop();
@@ -85,7 +89,7 @@ void MainWindow::updateBirdCartoon()
 void MainWindow::onFlyBtnClicked()
 {
     if (!a_bird->Ifdead()) {
-        a_bird->fly();
+        temp->fly();
     } else {
 
     }

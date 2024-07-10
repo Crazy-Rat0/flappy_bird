@@ -1,0 +1,10 @@
+release/bird.o
+release/common.o
+release/main.o
+release/mainwindow.o
+release/pipe.o
+release/qrc_res.o
+release/moc_bird.o
+release/moc_common.o
+release/moc_mainwindow.o
+release/moc_pipe.o

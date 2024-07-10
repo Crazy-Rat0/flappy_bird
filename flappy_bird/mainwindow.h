@@ -6,6 +6,7 @@
 #include "pipe.h"
 #include <QTimer>
 #include <QLabel>
+#include "common.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +27,7 @@ private:
     QTimer* bird_drop_timer;
     QTimer* bird_cartoon_timer;
     QLabel* gameOverLabel; // QLabel 指针
+    common* temp;
     void showGameOver();
     bool checkCollision();
 private slots:

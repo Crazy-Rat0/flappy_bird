@@ -1,0 +1,10 @@
+debug/bird.o
+debug/common.o
+debug/main.o
+debug/mainwindow.o
+debug/pipe.o
+debug/qrc_res.o
+debug/moc_bird.o
+debug/moc_common.o
+debug/moc_mainwindow.o
+debug/moc_pipe.o

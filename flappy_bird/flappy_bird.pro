@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bird.cpp \
+    common.cpp \
     main.cpp \
     mainwindow.cpp \
     pipe.cpp
 
 HEADERS += \
     bird.h \
+    common.h \
     mainwindow.h \
     pipe.h
 
