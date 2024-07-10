@@ -27,6 +27,7 @@ private:
     QTimer* bird_cartoon_timer;
     QLabel* gameOverLabel; // QLabel 指针
     void showGameOver();
+    bool checkCollision();
 private slots:
     void updateBirdDrop();
     void updateBirdCartoon();

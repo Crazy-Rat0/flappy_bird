@@ -58,6 +58,12 @@ void MainWindow::updateBirdDrop()
 {
     if (!a_bird->Ifdead()) {
         a_bird->drop();
+                if (checkCollision()) {
+                    a_bird->Setdead();
+                    bird_drop_timer->stop();
+                    bird_cartoon_timer->stop();
+                    showGameOver(); // 显示 GAME OVER 图标
+                }
     } else {
         bird_drop_timer->stop();
         bird_cartoon_timer->stop();
@@ -85,5 +91,17 @@ void MainWindow::onFlyBtnClicked()
 void MainWindow::showGameOver()
 {
     gameOverLabel->setVisible(true); // 显示 GAME OVER 图标
+}
+bool MainWindow::checkCollision()
+{
+    QRect birdRect = a_bird->geometry();
+    for (int i = 0; i < pipe_list->getCount(); ++i) {
+        pipe* upperPipe = pipe_list->pipe_list[i][0];
+        pipe* lowerPipe = pipe_list->pipe_list[i][1];
+        if (birdRect.intersects(upperPipe->geometry()) || birdRect.intersects(lowerPipe->geometry())) {
+            return true;
+        }
+    }
+    return false;
 }
 

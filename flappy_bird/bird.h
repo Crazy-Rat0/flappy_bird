@@ -1,8 +1,9 @@
 #ifndef BIRD_H
 #define BIRD_H
+
 #include <QPushButton>
 #include <QWidget>
-
+#include "pipe.h"
 
 class bird:public QPushButton
 {
@@ -13,6 +14,7 @@ public:
     int last_image_index;//used to store the last index of cartoon
     bool Isdead = 0;
     bool Ifdead();
+    void Setdead();
 public slots:
     void drop();
     void fly();

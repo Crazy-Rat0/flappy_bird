@@ -48,9 +48,13 @@ bool bird::Ifdead()
 {
     if(this->y()>=403)
     {
-        Isdead = 1;
+        Setdead();
     }
     return Isdead;
+}
+void bird::Setdead()
+{
+    Isdead = 1;
 }
 
 
