@@ -62,11 +62,13 @@ void MainWindow::updateBirdDrop()
                     a_bird->Setdead();
                     bird_drop_timer->stop();
                     bird_cartoon_timer->stop();
+                    pipe_move_timer->stop();
                     showGameOver(); // 显示 GAME OVER 图标
                 }
     } else {
         bird_drop_timer->stop();
         bird_cartoon_timer->stop();
+        pipe_move_timer->stop();
         showGameOver();
     }
 }
@@ -77,6 +79,7 @@ void MainWindow::updateBirdCartoon()
         a_bird->change_image();
     } else {
         bird_cartoon_timer->stop();
+        pipe_move_timer->stop();
     }
 }
 void MainWindow::onFlyBtnClicked()
